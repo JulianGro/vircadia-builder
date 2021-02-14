@@ -690,7 +690,8 @@ sub adjust_libs_search_func {
 	# Don't touch cmake things
 	return if ( $relpath =~ /CMakeFiles/ );
 
-	if ( -f $abspath && -x $abspath && is_elf($abspath) )  {
+    # Do not run on Amazon Linux 2 as it does not have patchelf
+	if ( -f $abspath && -x $abspath && is_elf($abspath) && $distro !eq "amzn-2" )  {
 		patch_rpath($abspath, $File::Find::dir);
 	}
 }
