@@ -511,7 +511,13 @@ sub build {
 	mkdir("$root_dir/build");
 	chdir("$root_dir/build");
 
-	run("cmake", "../source");
+    if ( $distro = amzn-2 ) {
+    	run("cmake3", "../source");
+    }
+    else {
+        run("cmake", "../source");
+    }
+
 	foreach my $target (@build_list) {
 		important("Building target $target\n");
 		run("make", $target, "-j${build_cores}");
