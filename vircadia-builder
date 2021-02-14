@@ -905,7 +905,7 @@ sub setup_services {
 		if ( $services_created ) {
 			info("Reloading systemd config... ");
             if ( $distro eq "amzn-2" ) {
-                info("\nAmazon Linux 2 does not support user services. Skipping daemon reload.\n"
+                info("\nAmazon Linux 2 does not support user services. Skipping daemon reload.\n";
 			} else {
                 run("systemctl", "--user", "daemon-reload");
             }
