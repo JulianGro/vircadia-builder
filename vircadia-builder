@@ -511,6 +511,7 @@ sub build {
 	mkdir("$root_dir/build");
 	chdir("$root_dir/build");
 
+    # Use cmake3 on Amazon Linux 2 as cmake always links to cmake version 2
     if ( $distro eq "amzn-2" ) {
     	run("cmake3", "../source");
     } else {
