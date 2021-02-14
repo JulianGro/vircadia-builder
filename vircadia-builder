@@ -513,8 +513,7 @@ sub build {
 
     if ( $distro eq "amzn-2" ) {
     	run("cmake3", "../source");
-    }
-    else {
+    } else {
         run("cmake", "../source");
     }
 
