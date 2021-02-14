@@ -692,7 +692,7 @@ sub adjust_libs_search_func {
 	return if ( $relpath =~ /CMakeFiles/ );
 
     # Do not run on Amazon Linux 2 as it does not have patchelf
-	if ( -f $abspath && -x $abspath && is_elf($abspath) && $distro !eq "amzn-2" )  {
+	if ( -f $abspath && -x $abspath && is_elf($abspath) && $distro ne "amzn-2" )  {
 		patch_rpath($abspath, $File::Find::dir);
 	}
 }
