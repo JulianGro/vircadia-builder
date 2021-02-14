@@ -511,7 +511,7 @@ sub build {
 	mkdir("$root_dir/build");
 	chdir("$root_dir/build");
 
-    if ( $distro = amzn-2 ) {
+    if ( $distro eq "amzn-2" ) {
     	run("cmake3", "../source");
     }
     else {
