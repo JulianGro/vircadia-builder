@@ -904,7 +904,11 @@ sub setup_services {
 	unless($opt_skip_systemd_restart) {
 		if ( $services_created ) {
 			info("Reloading systemd config... ");
-			run("systemctl", "--user", "daemon-reload");
+            if ( $distro eq "amzn-2" ) {
+                info("\nAmazon Linux 2 does not support user services. Skipping daemon reload.\n"
+			} else {
+                run("systemctl", "--user", "daemon-reload");
+            }
 			info_ok("done.\n");
 		}
 	}
